@@ -14,6 +14,7 @@ def main():
 
     # Parse column names
     column_names = data_frame.columns.tolist()
+    new_column_names = []
     for column_name in column_names:
         # Remove leading and trailing spaces
         column_name.strip()
@@ -24,7 +25,9 @@ def main():
         # Replace special characters with underscores
         column_name.replace(r'[^\w]', '_', regex=True)
 
+        new_column_names.append()
 
+    data_frame.columns = new_column_names
 
     # Export cleaned data frame to csv
     data_frame.to_csv("cleaned-data.csv")
