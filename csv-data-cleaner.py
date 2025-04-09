@@ -47,7 +47,7 @@ def main():
 
     # Group rows that have the same name, age, and join_date; keep all email addresses
     data_frame = data_frame.groupby(['name', 'age', 'join_date'], as_index = False).agg({
-        'email': 'first'
+        'email': 'last'
     })
 
     print(f'Cleaned data: \n {data_frame}\n')
