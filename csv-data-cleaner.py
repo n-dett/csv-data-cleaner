@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import argparse
 
 def main():
@@ -9,7 +10,10 @@ def main():
     file_path = args.file_path
 
     # Load csv into data frame
-    data_frame = pd.read_csv(file_path)
+    data_frame = pd.read_csv(file_path, parse_dates=['Join Date'])
+
+    # Replace empty strings with NaN
+    data_frame.replace('', np.nan, inplace=True)
 
 
     # Parse column names
@@ -28,6 +32,18 @@ def main():
         new_column_names.append()
 
     data_frame.columns = new_column_names
+
+
+    # Convert all names to title case
+    data_frame['name'] = data_frame['name'].title()
+    # Group rows that have the same name, age, and join_date; keep all email addresses
+    data_frame = data_frame.groupby(['name', 'age', 'join_date'], as_index = False).agg({
+        'email': 'list'
+    })
+
+    # Remove duplicate rows
+    data_frame.drop_duplicates()
+
 
     # Export cleaned data frame to csv
     data_frame.to_csv("cleaned-data.csv")
