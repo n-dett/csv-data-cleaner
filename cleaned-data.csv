@@ -1,0 +1,5 @@
+name,age,join_date,email
+Alice,57.0,2023-03-15,alice@example.com
+Bob Lee,,2023-03-15,
+Jane Smith,,,jane@example.com
+John Doe,30.0,2022-01-01,john@example.com

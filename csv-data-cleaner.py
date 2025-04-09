@@ -39,14 +39,8 @@ def main():
     # Convert all names to title case
     data_frame['name'] = data_frame['name'].apply(lambda x: x.title() if isinstance(x, str) else x)
 
-
-    # Fill empty values
-    data_frame.fillna({'name': 'N/A', 'age': 0}, inplace=True)
-    placeholder_date = pd.to_datetime('1901-01-01')
-    data_frame.fillna({'join_date': placeholder_date}, inplace=True)
-
     # Group rows that have the same name, age, and join_date; keep all email addresses
-    data_frame = data_frame.groupby(['name', 'age', 'join_date'], as_index = False).agg({
+    data_frame = data_frame.groupby(['name', 'age', 'join_date'], as_index = False, dropna = False).agg({
         'email': 'last'
     })
 
