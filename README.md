@@ -9,6 +9,7 @@ The script performs the following cleaning operations:
 - Removes leading and trailing whitespace from column names
 - Converts all column names to lowercase
 - Replaces spaces and special characters in column names with underscores
+- Converts all name data to title case
 - Standardizes date formats
 - Aggregates duplicate entries
 - Saves the cleaned data to `cleaned_data.csv`
